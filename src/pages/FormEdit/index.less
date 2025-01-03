@@ -1,0 +1,54 @@
+.formEdit{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .formEditPageHeader{
+    flex: 0 0 auto;
+  }
+
+  .formEditContent{
+    flex: 1;
+    overflow: auto;
+    display: flex;
+
+    .sideBar{
+      flex: 0 0 44px;
+      border-right: 1px solid #dcdfe6;
+      box-sizing: border-box;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+      gap: 10px;
+      overflow: auto;
+
+      .sideBarItem{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .sideBarItemIcon{
+          font-size: 16px;
+        } 
+
+        &:hover{
+          color: var(--ant-color-primary);
+        }
+           
+      }
+    }
+
+    .formEditContentLeft{
+      flex: 0 0 240px;
+      height: 100%;
+      overflow: auto;
+      background-color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  }
+}

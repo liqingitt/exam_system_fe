@@ -11,9 +11,11 @@
   "dependencies": {
     "ahooks": "^3.8.4",
     "antd": "^5.22.7",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "motion": "^11.15.0",
-    "umi": "^4.4.2"
+    "umi": "^4.4.2",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",

@@ -1,21 +1,39 @@
-import { Link, Outlet } from 'umi';
-import styles from './index.less';
+import { App, ConfigProvider } from 'antd';
+import zhCN from 'antd/locale/zh_CN';
+import 'dayjs/locale/zh-cn';
+import {  Outlet } from 'umi';
 
 export default function Layout() {
   return (
-    <div className={styles.navs}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/docs">Docs</Link>
-        </li>
-        <li>
-          <a href="https://github.com/umijs/umi">Github</a>
-        </li>
-      </ul>
-      <Outlet />
-    </div>
+    <ConfigProvider 
+      locale={zhCN}
+      theme={{
+        cssVar:true,
+        token:{
+          borderRadius:4,
+          colorInfo:'#722ed1',
+          colorLink:'#722ed1',
+          colorPrimary:'#722ed1',
+          colorSuccess:'#52c41a',
+          colorTextBase:'#333',
+          colorWarning:'#faad14',
+          fontSize:12,
+          sizePopupArrow:14,
+        },
+        components:{
+          Menu:{
+            activeBarBorderWidth:0,
+          },
+          Typography:{
+            titleMarginBottom:0,
+            titleMarginTop:0,
+          }
+        }
+      }}
+    >
+      <App>
+        <Outlet />
+      </App>
+    </ConfigProvider>
   );
 }

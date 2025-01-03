@@ -2,8 +2,17 @@ import { defineConfig } from "umi";
 
 export default defineConfig({
   routes: [
-    { path: "/", component: "index" },
-    { path: "/docs", component: "docs" },
+    { path: '/', redirect: '/prod/formList' },
+    {
+      path: "/prod",
+      component: "@/layouts/ProdLayout",
+      routes: [
+        { path: "/prod", redirect: "/prod/formList" },
+        { path: "/prod/formList", component: "FormList" },
+       
+      ]
+    },
+    { path: "/form/edit/:formId", component: "FormEdit" },
   ],
   npmClient: 'npm',
 });

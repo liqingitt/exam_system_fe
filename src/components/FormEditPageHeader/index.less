@@ -1,0 +1,44 @@
+.formEditPageHeader{
+    height: 44px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .formEditPageHeaderLeft{
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .returnBtn{
+            cursor: pointer;
+        }
+
+        .formTitle{
+            font-size: 14px;
+        }
+
+        .lastSaveTime{
+            color: #999;
+            display: flex;
+            gap: 4px;
+        }
+    }
+
+    .formEditPageHeaderMiddle{
+        font-size: 14px;
+        flex: 1;
+        overflow: auto;
+        padding: 0 20px 0 40px;
+
+        .formEditPageHeaderMiddleItem{
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            cursor: pointer;
+        }
+    }
+}
