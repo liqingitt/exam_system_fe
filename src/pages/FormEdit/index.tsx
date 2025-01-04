@@ -38,10 +38,13 @@ const FormEdit:React.FC = () => {
         <TopicType />
       </div>
       <div className={styles.formEditContentCenter}>
-        <EditArea />
+        <div className={styles.formEditContentCenterBody}>
+          <EditArea />
+        </div>
+
       </div>
       <div className={styles.formEditContentRight}>
-        34
+        组件属性
       </div>
     </div>
   </div>;
