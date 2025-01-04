@@ -1,4 +1,4 @@
-import { EditArea } from '@/components/EditArea';
+import { EditArea } from '@/components/FormRender';
 import { FormEditPageHeader } from '@/components/FormEditPageHeader';
 import React, { useState } from 'react';
 import styles from './index.less';
@@ -6,7 +6,7 @@ import { IconFont } from '@/components/IconFont';
 import { theme } from 'antd';
 
 import TopicType from './components/TopicType';
-import { storeHoc } from '@/components/EditArea/stores';
+import { storeHoc } from '@/components/FormRender/stores';
 const FormEdit:React.FC = () => {
   const [activeSideBar,setActiveSideBar] = useState<string>('type');
 

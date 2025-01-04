@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styles from './index.less'
-import { ComponentConfig, useComponentConfigStore } from '@/components/EditArea/stores/componentConfigStore';
+import { ComponentConfig, useComponentConfigStore } from '@/components/FormRender/stores/componentConfigStore';
 const TopicType:React.FC = () => {
   const componentConfigs = useComponentConfigStore(state => state.componentConfigs)
   const componentGroupConfigs = useMemo(() => {
