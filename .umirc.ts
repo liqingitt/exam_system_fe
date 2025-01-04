@@ -13,6 +13,7 @@ export default defineConfig({
       ]
     },
     { path: "/form/edit/:formId", component: "FormEdit" },
+    { path: "/form/enter/:formId", component: "FormEnter" },
   ],
   npmClient: 'npm',
 });
