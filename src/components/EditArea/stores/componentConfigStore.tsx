@@ -8,7 +8,7 @@ export interface ComponentConfig {
 }
 
 export interface ComponentConfigState {
-    componentConfigs:Array<ComponentConfig>
+    componentConfigs:Record<string,ComponentConfig>
 }
 
 export type ComponentConfigProps = ComponentConfigState

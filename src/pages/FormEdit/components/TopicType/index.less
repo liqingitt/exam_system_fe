@@ -1,0 +1,32 @@
+.topicType{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .topicTypeGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .topicTypeGroupTitle{
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .topicTypeGroupContent{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4px;
+      row-gap: 8px;
+
+      .topicTypeGroupItem{
+        padding: 4px 8px;
+        background-color: #f8f9fd;
+        box-sizing: border-box;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+  }
+}

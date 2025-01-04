@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import styles from './index.less';
 import { IconFont } from '@/components/IconFont';
 import { theme } from 'antd';
-import { ComponentConfigProvider } from './stores/componentConfigStore';
-import { initComponentConfigs } from './const';
+
 import TopicType from './components/TopicType';
+import { storeHoc } from '@/components/EditArea/stores';
 const FormEdit:React.FC = () => {
   const [activeSideBar,setActiveSideBar] = useState<string>('type');
 
@@ -48,17 +48,5 @@ const FormEdit:React.FC = () => {
 };
 
 
-/**
- * 连接且只在渲染组件时初始化store
- * @param Component 
- * @returns 
- */
-const formEditWithStore = <T extends object>(Component: React.FC<T>) => {
-  return (props: T) => {
-    return <ComponentConfigProvider componentConfigState={{componentConfigs:initComponentConfigs}}>
-      <Component {...props} />
-    </ComponentConfigProvider>
-  }
-}
 
-export default formEditWithStore(FormEdit);
+export default storeHoc(FormEdit);
