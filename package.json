@@ -17,6 +17,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "umi": "^4.4.2",
+    "uuid": "^11.0.4",
     "zustand": "^5.0.2"
   },
   "devDependencies": {

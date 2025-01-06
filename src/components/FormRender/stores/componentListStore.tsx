@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { createStore, useStore } from 'zustand';
+import { useShallow } from 'zustand/shallow';
 
 export interface ComponentItem {
     id: string;
@@ -10,13 +11,38 @@ export interface ComponentListState {
     componentList: ComponentItem[];
 }
 
-export type ComponentListProps = ComponentListState
+export interface ComponentListProps extends ComponentListState {
+  componentListPush: (component: ComponentItem) => void;
+  /**
+   * 在指定id之前插入组件
+   * @param data 
+   * @returns 
+   */
+  componentListInsert:(data:{
+    beforeId:string,
+    componentItem:ComponentItem
+  }) => void
+}
 
 type ComponentListStore = ReturnType<typeof createComponentListStore>
 
 const createComponentListStore = (initState:ComponentListState) => {
-  return createStore<ComponentListProps>(() => ({
+  return createStore<ComponentListProps>((set,get) => ({
     ...initState,
+    componentListPush: (component: ComponentItem) => {
+      set({
+        componentList: [...get().componentList, component]
+      })
+    },
+    componentListInsert: (data) => {
+      console.log('我调用了');
+      
+      const {beforeId,componentItem} = data;
+      const index = get().componentList.findIndex(item => item.id === beforeId);
+      const newList = [...get().componentList];
+      newList.splice(index, 0, componentItem);
+      set({componentList: newList});
+    }
   }))
 }
 
@@ -40,5 +66,5 @@ export const useComponentListStore = <T,>(selector: (state: ComponentListProps) 
   if (!store) {
     throw new Error('useComponentListStore must be used within a ComponentListProvider');
   }
-  return useStore(store,selector);
+  return useStore(store,useShallow(selector) );
 }

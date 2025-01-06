@@ -1,7 +1,6 @@
 import React from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-import { DragComponentType } from './const';
-import { ComponentConfig } from './stores/componentConfigStore';
+import { useComponentListStore } from './stores/componentListStore';
+import { Topic } from './components/Topic';
 
 /**
  * 使用该组件时，务必在外层组件中包裹 storeHoc 与 react-dnd 包裹
@@ -13,35 +12,15 @@ export interface FormRenderProps {
 
 export const FormRender:React.FC<FormRenderProps> = (props) => {
   const {model} = props;
-  const [{isOver},drop] = useDrop({
-    accept: DragComponentType.ComponentConfig,
-    drop: (item: ComponentConfig) => {
-      console.log(item)
-    },
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver()
-    })
-  })
-  const [{isDragging},drag] = useDrag({
-    type: DragComponentType.Component,
-    item: {
-      ddd:234
-    },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging()
-    }),
-    canDrag: () => model !== 'enter'
-  })
 
+
+  const componentList = useComponentListStore(state => state.componentList);
   
-  return <div 
-    ref={(node) => {
-      drag(drop(node))
-    }}
-    style={{
-      opacity: isDragging ? 0.5 : 1,
-      backgroundColor: isOver ? '#f0f0f0' : 'transparent'
-    }}>
-    324
+  return <div>
+    {
+      componentList.map(component => {
+        return <Topic key={component.id} componentItem={component} model={model} />
+      })
+    }
   </div>;
 };
