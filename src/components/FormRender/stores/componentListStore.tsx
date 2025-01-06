@@ -35,7 +35,6 @@ const createComponentListStore = (initState:ComponentListState) => {
       })
     },
     componentListInsert: (data) => {
-      console.log('我调用了');
       
       const {beforeId,componentItem} = data;
       const index = get().componentList.findIndex(item => item.id === beforeId);

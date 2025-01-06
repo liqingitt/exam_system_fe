@@ -47,7 +47,7 @@ const FormEdit:React.FC = () => {
         组件属性
         </div>
       </div>
-    </div>;
+    </div>
   </DndProvider> 
 };
 

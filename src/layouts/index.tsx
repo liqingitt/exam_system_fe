@@ -21,6 +21,9 @@ export default function Layout() {
           sizePopupArrow:14,
         },
         components:{
+          Form:{
+            itemMarginBottom:6,
+          },
           Menu:{
             activeBarBorderWidth:0,
           },

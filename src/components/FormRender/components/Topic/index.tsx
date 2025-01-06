@@ -1,11 +1,11 @@
-import { Input, theme } from 'antd';
+import { Form, Input, theme } from 'antd';
 import React, { useCallback } from 'react';
 import { ComponentItem, useComponentListStore } from '../../stores/componentListStore';
 import { ComponentConfig, useComponentConfigStore } from '../../stores/componentConfigStore';
 import { DragComponentType } from '../../const';
 import { DropTargetMonitor, useDrag, useDrop } from 'react-dnd';
-import { TopicGap } from '../TopicGap';
 import { v4 as uuid } from 'uuid';
+import styles from './index.less';
 export interface TopicProps {
     componentItem:ComponentItem
      model:'edit' | 'enter'
@@ -80,32 +80,37 @@ export const Topic:React.FC<TopicProps> = (props) => {
 
 
 
-  return <>
-    <TopicGap 
-      style={isOver ? {backgroundColor: token.colorPrimary} : undefined}
-      onDrop={onDrop}
-      onIsOver={onIsOver}
-    />
-    <div 
-      className='topic-container'
-      ref={(node) => {
-        drop(node)
-        dragPreview(node)
-      }}
-      data-component-id={componentItem.id}
-      style={{
-        opacity:isDragging ? 0.5 : 1
-      }}
+  return <div 
+    className={styles.topic}
+    ref={drop}
+   
+    style={{
+      opacity:isDragging ? 0.5 : 1
+    }}
+  >
+    <div style={{
+      width:'100%',
+      height:10,
+      backgroundColor:isOver ? token.colorPrimary : undefined
+    }} />
+    <div className={styles.topicContent}
+      data-component-id={componentItem.id} 
+      ref={dragPreview}
     >
-      <span ref={drag} >234</span>
+      {/* <span ref={drag} >234</span> */}
       <div>
         <Input value={'题目' + componentItem.id} />
         <Input value={'题干'} />
       </div>
       <div>
-        {React.createElement(componentConfigs[componentItem.componentName].component)}
+        <Form.Item>
+          {React.createElement(componentConfigs[componentItem.componentName].component)}
+        </Form.Item>
+        
       </div>
- 
     </div>
-  </>
+  
+ 
+  </div>
+  
 }
