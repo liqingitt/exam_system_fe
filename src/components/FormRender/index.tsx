@@ -1,7 +1,6 @@
 import React from 'react';
 import { useComponentListStore } from './stores/componentListStore';
 import { Topic } from './components/Topic';
-
 /**
  * 使用该组件时，务必在外层组件中包裹 storeHoc 与 react-dnd 包裹
  */

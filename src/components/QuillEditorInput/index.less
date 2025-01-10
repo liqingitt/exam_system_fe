@@ -1,0 +1,39 @@
+
+.quillEditorInputWrapper{
+  position: relative;
+
+  div.quillEditorInput{
+    border-radius:var(--ant-border-radius);
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+
+    &:hover{
+      border: 1px solid #9254de!important;
+    }
+
+    :global(.ql-editor){
+      padding: 5px 11px;
+    }
+  }
+
+  :global(div.editing){
+    border: 1px solid #9254de !important;
+  }
+  
+  .quillEditorToolbar{
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 5px);
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    // border: 1px solid #9254de;
+    border: none;
+    border-radius: var(--ant-border-radius);
+    box-sizing: border-box;
+    padding: 2px;
+    box-shadow: 0 0 0 2px rgba(51, 48, 52, 4%);
+  }
+
+}

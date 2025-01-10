@@ -6,6 +6,7 @@ import { DragComponentType } from '../../const';
 import { DropTargetMonitor, useDrag, useDrop } from 'react-dnd';
 import { v4 as uuid } from 'uuid';
 import styles from './index.less';
+import { QuillEditorInput } from '@/components/QuillEditorInput';
 export interface TopicProps {
     componentItem:ComponentItem
      model:'edit' | 'enter'
@@ -100,7 +101,7 @@ export const Topic:React.FC<TopicProps> = (props) => {
       {/* <span ref={drag} >234</span> */}
       <div>
         <Input value={'题目' + componentItem.id} />
-        <Input value={'题干'} />
+        <QuillEditorInput />
       </div>
       <div>
         <Form.Item>
