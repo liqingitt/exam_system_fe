@@ -1,5 +1,5 @@
 import { Form, Input, theme } from 'antd';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { ComponentItem, useComponentListStore } from '../../stores/componentListStore';
 import { ComponentConfig, useComponentConfigStore } from '../../stores/componentConfigStore';
 import { DragComponentType } from '../../const';
@@ -16,9 +16,17 @@ export const Topic:React.FC<TopicProps> = (props) => {
 
   const {token} = theme.useToken();
 
+  const [text,setText] = useState<string | undefined>(() => JSON.stringify({
+    'ops': [
+      {
+        'insert': '题干\n'
+      }
+    ]
+  }));
+
   const componentConfigs = useComponentConfigStore(state => state.componentConfigs);
 
-  
+
   const {componentListInsert} = useComponentListStore(state => ({componentListInsert:state.componentListInsert}));
 
   const onDrop = useCallback( (item: any,monitor:DropTargetMonitor<unknown, unknown>) => {
@@ -101,17 +109,20 @@ export const Topic:React.FC<TopicProps> = (props) => {
       {/* <span ref={drag} >234</span> */}
       <div>
         <Input value={'题目' + componentItem.id} />
-        <QuillEditorInput />
+        <QuillEditorInput value={text} onChange={setText} />
       </div>
-      <div>
+      <div style={{
+        contain: 'paint'
+      }}>
         <Form.Item>
           {React.createElement(componentConfigs[componentItem.componentName].component)}
         </Form.Item>
         
       </div>
+      <div>
+      </div>
     </div>
-  
- 
+   
   </div>
   
 }
